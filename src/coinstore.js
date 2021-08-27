@@ -11,12 +11,12 @@ export const fetchcryptocoin = async () => {
 	const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false";
 	const res = await fetch(url);
 	const data = await res.json();
-	const loadedCryptoCoin = data.map(({id, image}) => ({
+	const loadedcryptocoin = data.map(({id, image}) => ({
 		name: id,
 		id: id,
 		image: image
 	}));
-	cryptocoin.set(loadedCryptoCoin);
+	cryptocoin.set(loadedcryptocoin);
 	isLoaded = true;
 };
 
@@ -24,7 +24,7 @@ export const getCoinById = async (id) => {
 	if (cryptocoinDetails[id]) return cryptocoinDetails[id];
 
 	try {
-		const url = "https://api.coingecko.com/api/v3/coins/${id}";
+		const url = `https://api.coingecko.com/api/v3/coins/${id}`;
 		const res = await fetch(url);
 		const data = await res.json();
 
